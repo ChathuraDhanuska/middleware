@@ -23,21 +23,8 @@ exports.get_feature_list = function(req, res) {
       var arr = [];
 
       for (var i = 0; i < list.length; i++) {
-
-        if (roles.Role[0] == "BranchManager"){
-          if(list[i].BranchManager == "yes") {
-            arr.push(list[i].FeatureName);
-          }
-        } 
-        else if (roles.Role[0] == "ChiefManager"){
-          if(list[i].ChiefManager == "yes") {
-            arr.push(list[i].FeatureName);
-          }
-        } 
-        else if (roles.Role[0] == "Member"){
-          if(list[i].Member == "yes") {
-            arr.push(list[i].FeatureName);
-          }
+        if(list[i][roles.Role[0]] == "yes"){
+          arr.push(list[i].FeatureName);
         }
       }
 
